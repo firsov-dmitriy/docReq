@@ -1,10 +1,16 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { constructorApi } from "./service/constructorApi";
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { docApi } from "./service/docApi";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    [docApi.reducerPath]: docApi.reducer,
+    [constructorApi.reducerPath]: constructorApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+      .concat(docApi.middleware)
+      .concat(constructorApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
