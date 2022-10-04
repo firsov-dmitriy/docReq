@@ -12,6 +12,8 @@ import AppModal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import MenuLogin from "./MenuLogin";
 import { useAppSelector } from "../../app/hooks";
+import { NavLink } from "react-router-dom";
+import { StyledNavLink } from "./style";
 
 const Header = () => {
   const { fullName: user } = useAppSelector((state) => state.login);
@@ -19,19 +21,23 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant='h6'
             component='div'
             sx={{ flexGrow: 1 }}>
-            Doc
+            <StyledNavLink to={"/"}>Welcome</StyledNavLink>
+          </Typography>
+          <Typography
+            variant='h6'
+            component='div'
+            sx={{ flexGrow: 1 }}>
+            <StyledNavLink to={"/docs"}>Docs</StyledNavLink>
+          </Typography>
+          <Typography
+            variant='h6'
+            component='div'
+            sx={{ flexGrow: 1 }}>
+            <StyledNavLink to={"/form"}>Form</StyledNavLink>
           </Typography>
           {!user ? (
             <AppModal textBtn='Login'>

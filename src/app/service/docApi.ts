@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IDocReq } from "../../Types";
+import { IDocReq, IDocReqSort } from "../../Types";
 
 export const docApi = createApi({
   reducerPath: "docApi",
@@ -7,9 +7,10 @@ export const docApi = createApi({
     baseUrl: "https://fake-server-app-2022.herokuapp.com/",
   }),
   endpoints: (builder) => ({
-    getDocReq: builder.query<IDocReq[], {}>({
-      query: () => ({
+    getDocReq: builder.query<IDocReq[], IDocReqSort>({
+      query: ({ _sort = "constructorsId.length", _order = "desc" }) => ({
         url: "/docReq",
+        params: { _sort, _order },
       }),
     }),
   }),
