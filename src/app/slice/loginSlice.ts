@@ -1,24 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface loginState {
-  id: number;
-  fullName: string;
+  fullName: string | null;
   token?: string;
 }
 const initialState: loginState = {
-  id: 0,
-  fullName: "",
+  fullName: localStorage.getItem("user"),
 };
 
 export const loginSlice = createSlice({
   name: "loginSlice",
   initialState,
   reducers: {
-    login(_, action: PayloadAction<string>) {
+    login(state, action: PayloadAction<string>) {
       localStorage.setItem("user", action.payload);
+      state.fullName = action.payload;
     },
-    loginOut(_) {
+    loginOut(state) {
       localStorage.removeItem("user");
+      state.fullName = null;
     },
   },
 });

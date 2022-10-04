@@ -17,8 +17,10 @@ const MenuLogin: FC<MenuLoginProps> = ({ user }) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    dispatch(loginOut());
     setAnchorEl(null);
+  };
+  const handleLogout = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    dispatch(loginOut());
   };
   return (
     <>
@@ -40,7 +42,7 @@ const MenuLogin: FC<MenuLoginProps> = ({ user }) => {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </>
   );

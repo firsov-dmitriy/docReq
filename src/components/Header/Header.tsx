@@ -11,10 +11,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AppModal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import MenuLogin from "./MenuLogin";
+import { useAppSelector } from "../../app/hooks";
 
 const Header = () => {
-  const [user, setUser] = useState(() => localStorage.getItem("user"));
-
+  const { fullName: user } = useAppSelector((state) => state.login);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
