@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IConstructor } from "../../Types";
 
 interface loginState {
-  fullName: string | null;
+  user: string | null;
+
   token?: string;
 }
 const initialState: loginState = {
-  fullName: localStorage.getItem("user"),
+  user: localStorage.getItem("user"),
 };
 
 export const loginSlice = createSlice({
@@ -14,11 +16,11 @@ export const loginSlice = createSlice({
   reducers: {
     login(state, action: PayloadAction<string>) {
       localStorage.setItem("user", action.payload);
-      state.fullName = action.payload;
+      state.user = action.payload;
     },
     loginOut(state) {
       localStorage.removeItem("user");
-      state.fullName = null;
+      state.user = null;
     },
   },
 });

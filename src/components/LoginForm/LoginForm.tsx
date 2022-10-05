@@ -7,11 +7,13 @@ import { useAppDispatch } from "../../app/hooks";
 import { login } from "../../app/slice/loginSlice";
 
 const LoginForm = () => {
-  const { data: users } = useGetConstructorsQuery({});
   const [user, setUser] = useState("");
+  const { data: users } = useGetConstructorsQuery({});
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
+    const value = event.target.value;
     setUser(event.target.value);
+    console.log(value);
   };
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,13 +22,16 @@ const LoginForm = () => {
   return (
     <Form onSubmit={hanldeSubmit}>
       <FormControl fullWidth>
-        <InputLabel id='demo-simple-select-label'>User</InputLabel>
+        <InputLabel id='demo-simple-select-label'>Пользователь</InputLabel>
         <Select
           labelId='demo-simple-select-label'
           id='demo-simple-select'
           value={user}
-          label='User'
-          onChange={handleChange}>
+          label='Пользователь'
+          onChange={(event) => {
+            handleChange(event);
+            setUser(event.target.value);
+          }}>
           {users &&
             users.map((user) => (
               <MenuItem

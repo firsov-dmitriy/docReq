@@ -1,22 +1,13 @@
-import React, { useState } from "react";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import React from "react";
+import { Box, AppBar, Toolbar, Typography } from "@mui/material";
 import AppModal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import MenuLogin from "./MenuLogin";
 import { useAppSelector } from "../../app/hooks";
-import { NavLink } from "react-router-dom";
 import { StyledNavLink } from "./style";
 
 const Header = () => {
-  const { fullName: user } = useAppSelector((state) => state.login);
+  const { user } = useAppSelector((state) => state.login);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>

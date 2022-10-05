@@ -1,7 +1,7 @@
 export interface IDocReq {
   id: number;
   name: string;
-  constructorsId: number[];
+  constructorsId: Array<number>;
 }
 export interface IConstructor {
   id: number;
