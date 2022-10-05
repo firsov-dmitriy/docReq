@@ -9,9 +9,12 @@ import Paper from "@mui/material/Paper";
 import { useGetDocReqQuery } from "../../app/service/docApi";
 import RowTable from "./Row";
 import { Box } from "@mui/material";
+import { IDocReq } from "../../Types";
+interface DocsTableProps {
+  docs: IDocReq[];
+}
 
-export default function DocsTable() {
-  const { data: docs } = useGetDocReqQuery({});
+export default function DocsTable({ docs }: DocsTableProps) {
   return (
     <Box
       display={"flex"}
@@ -30,13 +33,12 @@ export default function DocsTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {docs &&
-              docs.map((doc) => (
-                <RowTable
-                  key={doc.id}
-                  doc={doc}
-                />
-              ))}
+            {docs.map((doc) => (
+              <RowTable
+                key={doc.id}
+                doc={doc}
+              />
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

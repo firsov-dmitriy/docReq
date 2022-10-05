@@ -30,10 +30,12 @@ function App() {
               }
             />
           )}
-          <Route
-            path='docs'
-            element={<DocsTable />}
-          />
+          {docs && (
+            <Route
+              path='docs'
+              element={<DocsTable docs={docs} />}
+            />
+          )}
         </Route>
       </Routes>
     </BrowserRouter>
