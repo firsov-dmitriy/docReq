@@ -15,10 +15,6 @@ function App() {
         <Route
           path='/'
           element={<AppLayout />}>
-          <Route
-            index
-            element={<h1>Hello</h1>}
-          />
           {users && docs && (
             <Route
               path='/form'
@@ -32,7 +28,7 @@ function App() {
           )}
           {docs && (
             <Route
-              path='docs'
+              index
               element={<DocsTable docs={docs} />}
             />
           )}

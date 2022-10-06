@@ -16,13 +16,7 @@ const Header = () => {
             variant='h6'
             component='div'
             sx={{ flexGrow: 1 }}>
-            <StyledNavLink to={"/"}>Welcome</StyledNavLink>
-          </Typography>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{ flexGrow: 1 }}>
-            <StyledNavLink to={"/docs"}>Docs</StyledNavLink>
+            <StyledNavLink to={"/"}>Docs</StyledNavLink>
           </Typography>
           <Typography
             variant='h6'
